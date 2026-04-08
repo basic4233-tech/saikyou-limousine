@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>株式会社 彩京リムジン | 最高級の貸切バス・送迎サービス</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            black: '#0a0a0a',
+                            dark: '#171717',
+                            gold: '#C5A059',
+                            light: '#F5F5F7',
+                            muted: '#86868b',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        rounded: ['"Zen Maru Gothic"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #F5F5F7;
+            color: #1d1d1f;
+            -webkit-font-smoothing: antialiased;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .img-zoom:hover img {
+            transform: scale(1.05);
+        }
+        /* Placeholder for images */
+        img { background-color: #e5e7eb; position: relative; }
+        img::after {
+            content: "画像: " attr(alt);
+            display: flex; align-items: center; justify-content: center;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #f3f4f6; color: #9ca3af; font-size: 0.75rem;
+            text-align: center; padding: 10px;
+        }
+        .page-transition {
+            display: none;
+        }
+        .page-transition.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .table-row {
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            padding: 1.25rem 0;
+        }
+        .table-label {
+            width: 30%;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+        .table-content {
+            width: 70%;
+            color: #4b5563;
+        }
+    </style>
+</head>
+<body class="font-sans">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 nav-glass py-4">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <a href="javascript:void(0)" onclick="showPage('home')" class="flex flex-col group">
+                <span class="text-xl md:text-2xl font-rounded font-bold tracking-wider text-brand-black">彩京リムジン</span>
+                <span class="text-[0.6rem] tracking-[0.2em] text-gray-500 font-sans uppercase">Saikyo Limousine</span>
+            </a>
+            
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="javascript:void(0)" onclick="showPage('home')" class="hover:text-brand-gold transition-colors">トップ</a>
+                <a href="javascript:void(0)" onclick="showPage('fleet')" class="hover:text-brand-gold transition-colors">車両紹介</a>
+                <a href="javascript:void(0)" onclick="showPage('company')" class="hover:text-brand-gold transition-colors">会社案内</a>
+                <a href="#contact" class="px-5 py-2 bg-brand-black text-white rounded-full hover:bg-brand-gold transition-all">お見積り</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE: HOME -->
+    <main id="home-page" class="page-transition active">
+        <!-- Hero -->
+        <section class="relative h-[85vh] w-full flex items-center justify-center bg-brand-black overflow-hidden">
+            <div class="absolute inset-0">
+                <img src="ふそう3.jpg" onerror="this.src='https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2000'" alt="イメージ及び大型観光バス" class="w-full h-full object-cover opacity-60">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent"></div>
+            </div>
+            <div class="relative z-10 text-center px-4">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">特別な瞬間を彩る、<br>最上級の移動空間。</h1>
+                <p class="text-gray-300 text-lg md:text-xl font-light tracking-widest mb-10">確かな安全と、心を尽くしたおもてなし。</p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center">
+                    <a href="javascript:void(0)" onclick="showPage('fleet')" class="px-8 py-4 bg-brand-gold text-white rounded-full font-bold hover:bg-white hover:text-brand-black transition-all shadow-lg">車両ラインナップを見る</a>
+                    <a href="javascript:void(0)" onclick="showPage('company')" class="px-8 py-4 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-full font-bold hover:bg-white/20 transition-all">会社案内を見る</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brief Intro -->
+        <section class="py-20 bg-white">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <div class="reveal">
+                    <span class="text-brand-gold text-sm font-bold tracking-[0.3em] uppercase mb-4 block">Our Spirit</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8">安全・安心・丁寧・親切</h2>
+                    <p class="text-gray-500 leading-relaxed text-lg font-light">
+                        埼玉県と東京都を拠点に、お客様のあらゆる移動をサポートする貸切バスのプロフェッショナルです。小型マイクロバスから、車椅子対応のリフトバス、そして移動そのものが愉しみになるレトロバスまで、多様なニーズに応える車両を完備しています。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Image Grid Section -->
+        <section class="py-20 bg-brand-light">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="reveal">
+                        <img src="都庁前　大型.jpg" onerror="this.src='https://images.unsplash.com/photo-1494510151348-dfce3031426c?q=80&w=800'" alt="大型観光バス" class="rounded-3xl shadow-xl w-full aspect-video object-cover">
+                        <h3 class="text-2xl font-bold mt-8 mb-4">貸切観光・団体旅行</h3>
+                        <p class="text-gray-500 leading-relaxed">都内観光から全国各地への団体旅行まで。最新の大型バスで、快適かつ安全な長距離移動をお約束いたします。</p>
+                    </div>
+                    <div class="reveal">
+                        <img src="中型送迎.jpg" onerror="this.src='https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=800'" alt="中型送迎バス" class="rounded-3xl shadow-xl w-full aspect-video object-cover">
+                        <h3 class="text-2xl font-bold mt-8 mb-4">冠婚葬祭・企業送迎</h3>
+                        <p class="text-gray-500 leading-relaxed">式場やホテル、空港送迎など。品格ある車両と丁寧な運転で、大切なお客様をエスコートいたします。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PAGE: FLEET -->
+    <main id="fleet-page" class="page-transition pt-32 pb-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-16 border-b border-gray-200 pb-10">
+                <span class="text-brand-gold text-sm font-bold tracking-[0.3em] uppercase mb-2 block">Our Fleet</span>
+                <h2 class="text-4xl font-bold text-brand-black mb-4">車両紹介</h2>
+                <p class="text-gray-500">用途や人数に合わせてお選びいただける、自慢のラインナップです。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                <!-- 1. 大型観光バス -->
+                <div class="reveal">
+                    <div class="rounded-3xl overflow-hidden shadow-lg mb-6">
+                        <img src="ふそう3.jpg" onerror="this.src='https://images.unsplash.com/photo-1570125909232-eb263c188f7e?q=80&w=800'" alt="大型観光バス" class="w-full aspect-video object-cover">
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-brand-gold text-xs font-bold tracking-widest uppercase">Heavy Duty</span>
+                            <h3 class="text-2xl font-bold mt-1">大型観光バス</h3>
+                        </div>
+                        <div class="bg-gray-100 px-4 py-1 rounded-full text-sm font-bold">正席49名</div>
+                    </div>
+                    <p class="text-gray-500 mt-4 leading-relaxed text-sm">最新の衝突被害軽減ブレーキや車線逸脱警報を装備。サロンシートやUSB電源など、長距離移動を快適にする設備が充実しています。</p>
+                </div>
+
+                <!-- 2. 中型観光バス -->
+                <div class="reveal">
+                    <div class="rounded-3xl overflow-hidden shadow-lg mb-6">
+                        <img src="20240508_中型2.JPG" onerror="this.src='https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=800'" alt="中型観光バス" class="w-full aspect-video object-cover">
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-brand-gold text-xs font-bold tracking-widest uppercase">Middle Class</span>
+                            <h3 class="text-2xl font-bold mt-1">中型観光バス</h3>
+                        </div>
+                        <div class="bg-gray-100 px-4 py-1 rounded-full text-sm font-bold">正席27名</div>
+                    </div>
+                    <p class="text-gray-500 mt-4 leading-relaxed text-sm">小回りがききながらも、大型バスに匹敵する豪華な内装。少人数での観光旅行や視察、接待旅行に最適です。</p>
+                </div>
+
+                <!-- 3. レトロバス -->
+                <div class="reveal">
+                    <div class="rounded-3xl overflow-hidden shadow-lg mb-6">
+                        <img src="20240508_中型　赤.JPG" onerror="this.src='https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=800'" alt="中型送迎バス（レトロバス）" class="w-full aspect-video object-cover">
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-brand-gold text-xs font-bold tracking-widest uppercase">Special / Retro</span>
+                            <h3 class="text-2xl font-bold mt-1">中型送迎（レトロバス）</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-500 mt-4 leading-relaxed text-sm">クラシックなデザインが目を引く特別車両。街歩きツアーや結婚式の送迎、シャトルバスとして運行するだけでイベントを盛り上げます。</p>
+                </div>
+
+                <!-- 4. ボンネットバス -->
+                <div class="reveal">
+                    <div class="rounded-3xl overflow-hidden shadow-lg mb-6">
+                        <img src="ボンネット1122.jpg" onerror="this.src='https://images.unsplash.com/photo-1532105956626-9569c03602f6?q=80&w=800'" alt="小型送迎バス（ボンネットバス）" class="w-full aspect-video object-cover">
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-brand-gold text-xs font-bold tracking-widest uppercase">Vintage / Bonnet</span>
+                            <h3 class="text-2xl font-bold mt-1">小型送迎（ボンネットバス）</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-500 mt-4 leading-relaxed text-sm">古き良き日本の風景に馴染む、希少なボンネットバス。観光地の周遊や、ドラマ・広告撮影、各種イベント送迎で大人気です。</p>
+                </div>
+            </div>
+            
+            <div class="mt-20 text-center">
+                <button onclick="showPage('home')" class="px-10 py-4 border-2 border-brand-black text-brand-black rounded-full font-bold hover:bg-brand-black hover:text-white transition-all">トップページへ戻る</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- PAGE: COMPANY -->
+    <main id="company-page" class="page-transition pt-32 pb-20">
+        <div class="max-w-5xl mx-auto px-6">
+            <!-- Company Profile Header -->
+            <div class="mb-16 border-b border-gray-200 pb-10">
+                <span class="text-brand-gold text-sm font-bold tracking-[0.3em] uppercase mb-2 block">Company Profile</span>
+                <h2 class="text-4xl font-bold text-brand-black mb-4">会社案内</h2>
+                <p class="text-gray-500 leading-relaxed">私たちは、安心と信頼のサービスを通じて、社会に貢献するモビリティカンパニーを目指します。</p>
+            </div>
+
+            <!-- Profile Table -->
+            <div class="mb-24 reveal">
+                <div class="table-row">
+                    <div class="table-label">社名</div>
+                    <div class="table-content">株式会社 彩京リムジン</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-label">代表取締役</div>
+                    <div class="table-content">齋藤 紀之</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-label">所在地</div>
+                    <div class="table-content">
+                        〒330-0804<br>
+                        埼玉県さいたま市大宮区堀の内町2-528-1
+                    </div>
+                </div>
+                <div class="table-row">
+                    <div class="table-label">電話番号</div>
+                    <div class="table-content">048-792-0288</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-label">FAX番号</div>
+                    <div class="table-content">048-792-0289</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-label">事業内容</div>
+                    <div class="table-content">一般貸切旅客自動車運送事業、送迎バス運行管理業務</div>
+                </div>
+            </div>
+
+            <!-- Safety Management Section -->
+            <div class="bg-white rounded-[2.5rem] p-8 md:p-16 shadow-sm reveal">
+                <div class="flex items-center mb-10">
+                    <div class="w-12 h-12 bg-brand-gold/10 rounded-xl flex items-center justify-center text-brand-gold mr-6">
+                        <i data-lucide="shield-check" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold">安全マネジメント</h3>
+                </div>
+
+                <div class="space-y-12">
+                    <div>
+                        <h4 class="text-xl font-bold text-brand-black mb-4 flex items-center">
+                            <span class="w-1.5 h-6 bg-brand-gold mr-3 rounded-full"></span>
+                            わが社の安全方針
+                        </h4>
+                        <ul class="space-y-4 text-gray-600 leading-relaxed pl-4">
+                            <li class="flex items-start">
+                                <span class="text-brand-gold mr-3 font-bold">1.</span>
+                                <span>社長は輸送の安全の確保が事業経営の根幹であることを深く認識し、社内において輸送の安全の確保に主導的な役割を果たします。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-brand-gold mr-3 font-bold">2.</span>
+                                <span>安全マネジメントを確実に実施し、全社員が一丸となって絶えず安全性の向上に努めます。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-brand-gold mr-3 font-bold">3.</span>
+                                <span>輸送の安全に関する情報については、積極的に公表します。</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="p-6 bg-brand-light rounded-3xl">
+                            <h4 class="font-bold mb-3 text-brand-black">輸送の安全に関する目標</h4>
+                            <p class="text-gray-500 text-sm leading-relaxed">
+                                有責事故「ゼロ」を目標とし、重大事故の発生を未然に防ぐ体制を構築しています。ヒヤリハット情報の共有を徹底し、未然防止に努めます。
+                            </p>
+                        </div>
+                        <div class="p-6 bg-brand-light rounded-3xl">
+                            <h4 class="font-bold mb-3 text-brand-black">安全管理体制</h4>
+                            <p class="text-gray-500 text-sm leading-relaxed">
+                                運行管理者、整備管理者を配置し、法令に基づいた点検・点呼を24時間365日実施。IT点呼やアルコールチェッカー等の最新機器も導入済みです。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center pt-6">
+                        <p class="text-xs text-gray-400">※詳細な安全報告書については、事務所窓口にて閲覧いただけます。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-20 text-center">
+                <button onclick="showPage('home')" class="px-10 py-4 border-2 border-brand-black text-brand-black rounded-full font-bold hover:bg-brand-black hover:text-white transition-all">トップページへ戻る</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Shared Footer -->
+    <section id="safety-badge" class="py-24 bg-brand-dark text-white">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div class="reveal">
+                <div class="flex space-x-2 mb-6">
+                    <i data-lucide="star" class="w-8 h-8 text-brand-gold fill-brand-gold"></i>
+                    <i data-lucide="star" class="w-8 h-8 text-brand-gold fill-brand-gold"></i>
+                    <i data-lucide="star" class="w-8 h-8 text-brand-gold fill-brand-gold"></i>
+                </div>
+                <h3 class="text-4xl font-bold mb-8">三ツ星認定の安全性。</h3>
+                <p class="text-gray-400 mb-8 leading-relaxed">
+                    彩京リムジンは、日本バス協会による「安全性評価認定」にて最高ランクの三ツ星を取得。徹底した点検整備と独自の安全マネジメントで、お客様に安心の旅をお届けします。
+                </p>
+                <a href="javascript:void(0)" onclick="showPage('company')" class="text-brand-gold hover:text-white transition-colors flex items-center font-bold">
+                    安全マネジメントの詳細を見る <i data-lucide="chevron-right" class="ml-2 w-5 h-5"></i>
+                </a>
+            </div>
+            <div class="flex justify-center reveal">
+                <div class="w-64 h-64 rounded-full border border-brand-gold/20 flex flex-col items-center justify-center text-center p-8 bg-black/30 backdrop-blur-sm relative">
+                    <div class="absolute inset-2 border border-dashed border-brand-gold/10 rounded-full animate-[spin_40s_linear_infinite]"></div>
+                    <i data-lucide="award" class="w-12 h-12 text-brand-gold mb-4"></i>
+                    <span class="block font-bold text-sm tracking-widest uppercase">Safety Excellence</span>
+                    <span class="text-[0.6rem] text-gray-500 mt-2">JAPAN BUS ASSOCIATION</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-brand-black text-gray-500 py-20 px-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto text-center">
+            <span class="text-brand-gold text-sm font-bold tracking-[0.3em] uppercase mb-4 block">Reservation</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-10">特別な旅を、ここから。</h2>
+            <div class="flex flex-col md:flex-row justify-center gap-6 mb-20">
+                <a href="tel:048-792-0288" class="px-10 py-5 bg-white text-brand-black rounded-full font-bold text-xl flex items-center justify-center hover:bg-brand-gold hover:text-white transition-all shadow-xl">
+                    <i data-lucide="phone" class="mr-3"></i> 048-792-0288
+                </a>
+                <a href="#" class="px-10 py-5 bg-brand-gold text-white rounded-full font-bold text-xl flex items-center justify-center hover:bg-white hover:text-brand-black transition-all shadow-xl">
+                    <i data-lucide="mail" class="mr-3"></i> WEBお見積り
+                </a>
+            </div>
+            <div class="pt-10 border-t border-white/5 text-sm">
+                <p class="mb-2 font-bold text-white">株式会社 彩京リムジン</p>
+                <p>〒330-0804 埼玉県さいたま市大宮区堀の内町2-528-1</p>
+                <p class="mt-8 text-xs opacity-50">&copy; 2026 SAIKYO LIMOUSINE Co., Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Page Navigation Logic
+        function showPage(pageId) {
+            document.querySelectorAll('.page-transition').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId + '-page').classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Re-trigger scroll reveal for new page content
+            setTimeout(handleScroll, 100);
+        }
+
+        // Scroll Reveal Animation
+        function handleScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.9) {
+                    el.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', handleScroll);
+        
+        // Mobile Navigation Auto-close placeholder
+        // In a real multi-page, this would manage more state.
+    </script>
+</body>
+</html>
